@@ -2,6 +2,10 @@ package sujana
 
 import "github.com/gonum/matrix/mat64"
 
+type zipper interface {
+	Zip()
+}
+
 type zipMat64 struct {
 	A, B *mat64.Dense
 }
@@ -9,19 +13,6 @@ type zipMat64 struct {
 type ZipMat struct {
 	A, B   []*mat64.Dense
 	Result []zipMat64
-}
-
-type zipInt struct {
-	A, B int
-}
-
-type ZipInt struct {
-	A, B   []int
-	Result []zipInt
-}
-
-type zipper interface {
-	Zip()
 }
 
 func (z *ZipMat) Zip() {
@@ -36,6 +27,15 @@ func (z *ZipMat) Zip() {
 
 	z.Result = r
 
+}
+
+type zipInt struct {
+	A, B int
+}
+
+type ZipInt struct {
+	A, B   []int
+	Result []zipInt
 }
 
 func (z *ZipInt) Zip() {
