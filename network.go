@@ -1,6 +1,7 @@
 package sujana
 
 import (
+	"math"
 	"math/rand"
 
 	"github.com/gonum/matrix/mat64"
@@ -39,4 +40,8 @@ func (n *Network) GetWeights() {
 		ret = append(ret, randMat(n.Sizes[i], n.Sizes[i+1]))
 	}
 	n.Weights = ret
+}
+
+func sigmoid(z float64) float64 {
+	return 1.0 / (1.0 + math.Exp(-z))
 }
