@@ -1,4 +1,4 @@
-package network
+package sujana
 
 import (
 	"math/rand"
@@ -21,21 +21,21 @@ type Network struct {
 	Weights []*mat64.Dense
 }
 
-func(n *Network)getLayers(){
+func (n *Network) GetLayers() {
 	n.Layers = len(n.Sizes)
 }
 
-func(n *Network) getBiases(){
+func (n *Network) GetBiases() {
 	var ret []*mat64.Dense
-	for _ , vals := range n.Sizes[1:]{
+	for _, vals := range n.Sizes[1:] {
 		ret = append(ret, randMat(vals, 1))
 	}
 	n.Biases = ret
 }
 
-func(n *Network)getWeights(){
+func (n *Network) GetWeights() {
 	var ret []*mat64.Dense
-	for i := range n.Sizes[: n.Layers - 1]{
+	for i := range n.Sizes[:n.Layers-1] {
 		ret = append(ret, randMat(n.Sizes[i], n.Sizes[i+1]))
 	}
 	n.Weights = ret
