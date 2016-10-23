@@ -15,4 +15,7 @@ func main() {
 	zip.Zip()
 	fmt.Println(zip.Result)
 	fmt.Println(nets.Biases, nets.Weights)
+	zipi := sujana.ZipInt{A: []int{1, 2, 3, 4}, B: []int{5, 6, 7, 8}}
+	zipi.Zip()
+	fmt.Println(zipi.Result)
 }
